@@ -1,26 +1,8 @@
-body{
-    background-color: orange;
-}
-
-h1 {
-    text-align: center;
-}
-h5{
-    text-align: center;
-}
-p{
-    text-align: center;
-}
-input{
-    width: 50px;
-    color:aqua;
-}
-
-div{
-    margin: .5rem;
-}
-.contenedor{
-    display: flex;
-    justify-content:space-around;
-    flex-wrap:wrap;
-}
+body {
+    background-color: #FF5B00;
+  }
+  
+  .color-fondo nav {
+    background-color: #990000;
+  }
+  

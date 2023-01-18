@@ -4,7 +4,7 @@ const comidas = [
         nombre: 'Pizza',
         estilo: 'Margarita',
         imagen: 'img/Margarita.jpeg',
-        valor: 1000,
+        precio: 1000,
         cantidad: 1
     },
     {

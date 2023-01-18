@@ -12,7 +12,7 @@ const filtrar = () => {
 
         if (nombre.indexOf(texto) !== -1) {
             resultado.innerHTML += `
-            <div class="card" style="width: 18rem;" id="resultado">
+            <div class="card row" style="width: 18rem;" id="resultado">
                 <img src=${comida.imagen} class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Nombre: ${comida.nombre}</h5>
