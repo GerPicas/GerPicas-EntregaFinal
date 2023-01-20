@@ -33,25 +33,25 @@ const contenedorComidas = document.getElementById("contenedorComidas");
 
 //Creamos una funcion para mostrar las comidas 
 const mostrarComidas = () => {
-    comidas.forEach( Comida => {
+    comidas.forEach( comidas => {
         const card = document.createElement("div");
         card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
         card.innerHTML = `
             <div class="card">
-                <img src="${Comida.img}" class="card-img-top imgProductos" alt="${Comida.nombre}">
+                <img src="${comidas.img}" class="card-img-top imgProductos" alt="${comidas.nombre}">
                 <div class= "card-body">
-                    <h5>${Comida.nombre}</h5>
-                    <p> ${Comida.precio} </p>
-                    <button class="btn btn-danger" id="boton${Comida.id}" > Agregar al Carrito </button>
+                    <h5>${comidas.nombre}</h5>
+                    <p> ${comidas.precio} </p>
+                    <button class="btn btn-danger" id="boton${comidas.id}" > Agregar al Carrito </button>
                 </div>
             </div>
                 `
         contenedorComidas.appendChild(card);
 
         //Agregar productos al carrito:
-        const boton = document.getElementById(`boton${Comida.id}`);
+        const boton = document.getElementById(`boton${comidas.id}`);
         boton.addEventListener("click", () => {
-            agregarAlCarrito(Comida.id);
+            agregarAlCarrito(comidas.id);
         })
     })
 }
@@ -61,11 +61,11 @@ mostrarComidas();
 //funcion de agregar al carrito 
 
 const agregarAlCarrito = (id) => {
-    const comidaEnCarrito = carrito.find(Comida => Comida.id === id);
+    const comidaEnCarrito = carrito.find(comidas => comidas.id === id);
     if(comidaEnCarrito) {
         comidaEnCarrito.cantidad++;
     } else {
-        const Comida = Comida.find(Comida => Comida.id === id);
+        const Comida = comidas.find(comidas => comidas.id === id);
         carrito.push(Comida);
     }
     //Trabajamos con el localStorage: 
@@ -85,26 +85,26 @@ verCarrito.addEventListener("click", () => {
 const mostrarCarrito = () => {
     contenedorCarrito.innerHTML = "";
 
-    carrito.forEach(Comida => {
+    carrito.forEach(comidas => {
         const card = document.createElement("div");
-        card.classListy.add("col-xl-3", "col-md-6", "col-xs-12");
+        card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
         card.innerHTML = `
             <div class="card">
-                <img src="${Comida.img}" class="card-img-top imgProductos" alt="${Comida.nombre}">
+                <img src="${comidas.img}" class="card-img-top imgProductos" alt="${comidas.nombre}">
                 <div class= "card-body">
-                    <h5>${Comida.nombre}</h5>
-                    <p> ${Comida.precio} </p>
-                    <p> ${Comida.cantidad} </p>
-                    <button class="btn colorBoton" id="eliminar${producto.id}" > Eliminar Producto </button>
+                    <h5>${comidas.nombre}</h5>
+                    <p> ${comidas.precio} </p>
+                    <p> ${comidas.cantidad} </p>
+                    <button class="btn btn-danger" id="eliminar${comidas.id}" > Eliminar Producto </button>
                 </div>
             </div>
                     `
         contenedorCarrito.appendChild(card);
 
         //eliminar productos del carrito:
-        const boton = document.getElementById(`eliminar${Comida.id}`);
+        const boton = document.getElementById(`eliminar${comidas.id}`);
         boton.addEventListener("click", () => {
-            eliminarDelCarrito(producto.id);
+            eliminarDelCarrito(comidas.id);
         })
     })
     calcularTotal();
@@ -113,7 +113,7 @@ const mostrarCarrito = () => {
 //Función que elimina el producto del carrito: 
 
 const eliminarDelCarrito = (id) => {
-    const Comida = carrito.find(Comida => Comida.id === id);
+    const Comida = carrito.find(comidas => comidas.id === id);
     const indice = carrito.indexOf(Comida);
     carrito.splice(indice, 1);
     mostrarCarrito();
@@ -146,8 +146,8 @@ const total = document.getElementById("total");
 
 const calcularTotal = () => {
     let totalCompra = 0;
-    carrito.forEach(Comida => {
-        totalCompra += Comida.precio * Comida.cantidad;
+    carrito.forEach(comidas => {
+        totalCompra += comidas.precio * comidas.cantidad;
     })
     total.innerHTML = `Total: $${totalCompra}`;
 }
